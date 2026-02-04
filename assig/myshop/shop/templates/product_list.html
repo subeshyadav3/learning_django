@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+</head>
+<body>
+    
+    <h2>Products</h2>
+<a href="{% url 'view_cart' %}">View Cart</a> | <a href="{% url 'logout' %}">Logout</a>
+<ul>
+    {% for product in products %}
+    <li>
+        <b>{{ product.name }}</b> - {{ product.price }}<br>
+        {{ product.description }}<br>
+        <a href="{% url 'add_to_cart' product.id %}">Add to Cart</a>
+    </li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

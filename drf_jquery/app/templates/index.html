@@ -3,7 +3,6 @@
 <head>
     <title>jQuery CRUD with Django REST</title>
 
-    <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
@@ -64,7 +63,7 @@ $('#save').click(function () {
     };
 
     if (id) {
-        // UPDATE
+     
         $.ajax({
             url: API_URL + id + '/',
             type: 'PUT',
@@ -75,7 +74,7 @@ $('#save').click(function () {
             }
         });
     } else {
-        // CREATE
+       
         $.post(API_URL, data, function () {
             clearForm();
             loadItems();

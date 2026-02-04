@@ -5,6 +5,7 @@ from rest_framework import status
 from .models import Item
 from .serializers import ItemSerializer
 from django.shortcuts import render
+from rest_framework.permissions import IsAuthenticated
 
 def index(request):
     return render(request, 'index.html')
@@ -15,7 +16,7 @@ class ItemListCreateAPIView(APIView):
         items = Item.objects.all()
         serializer = ItemSerializer(items, many=True)
         return Response(serializer.data)
-
+    
     def post(self, request):
         serializer = ItemSerializer(data=request.data)
         if serializer.is_valid():
