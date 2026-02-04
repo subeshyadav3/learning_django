@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery CRUD with Django REST</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+
+<h2>Item CRUD</h2>
+
+<input type="hidden" id="item_id">
+
+<input type="text" id="name" placeholder="Name">
+<input type="text" id="description" placeholder="Description">
+<input type="number" id="price" placeholder="Price">
+
+<button id="save">Save</button>
+
+<hr>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody id="items"></tbody>
+</table>
+
+<script>
+const API_URL = "/api/items/";
+
+function loadItems() {
+    $.get(API_URL, function(data) {
+        $('#items').empty();
+        data.forEach(item => {
+            $('#items').append(`
+                <tr>
+                    <td>${item.name}</td>
+                    <td>${item.description}</td>
+                    <td>${item.price}</td>
+                    <td>
+                        <button onclick="editItem(${item.id})">Edit</button>
+                        <button onclick="deleteItem(${item.id})">Delete</button>
+                    </td>
+                </tr>
+            `);
+        });
+    });
+}
+
+$('#save').click(function () {
+    let id = $('#item_id').val();
+
+    let data = {
+        name: $('#name').val(),
+        description: $('#description').val(),
+        price: $('#price').val()
+    };
+
+    if (id) {
+        // UPDATE
+        $.ajax({
+            url: API_URL + id + '/',
+            type: 'PUT',
+            data: data,
+            success: function () {
+                clearForm();
+                loadItems();
+            }
+        });
+    } else {
+        // CREATE
+        $.post(API_URL, data, function () {
+            clearForm();
+            loadItems();
+        });
+    }
+});
+
+function editItem(id) {
+    $.get(API_URL + id + '/', function (item) {
+        $('#item_id').val(item.id);
+        $('#name').val(item.name);
+        $('#description').val(item.description);
+        $('#price').val(item.price);
+    });
+}
+
+function deleteItem(id) {
+    $.ajax({
+        url: API_URL + id + '/',
+        type: 'DELETE',
+        success: loadItems
+    });
+}
+
+function clearForm() {
+    $('#item_id').val('');
+    $('#name').val('');
+    $('#description').val('');
+    $('#price').val('');
+}
+
+loadItems();
+</script>
+
+</body>
+</html>

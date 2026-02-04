@@ -1,0 +1,211 @@
+from school.models import Student, Course, Enrollment
+from django.db.models import Q, F, Count, Avg, Sum, Max, Min
+
+# ------------------------------
+# 1. BASIC QUERIES
+# ------------------------------
+
+# Get all students
+students = Student.objects.all()
+print(students)
+
+# Get first student
+first_student = Student.objects.first()
+print(first_student)
+
+# Get student by email (single object)
+alice = Student.objects.get(email="alice@example.com")
+print(alice)
+
+# Safe way to get or None
+bob = Student.objects.filter(email="bob@example.com").first()
+print(bob)
+
+# ------------------------------
+# 2. FILTERS
+# ------------------------------
+
+# Students older than 21
+older_students = Student.objects.filter(age__gt=21)
+print(older_students)
+
+# Female students
+female_students = Student.objects.filter(gender='F')
+print(female_students)
+
+# Active students with GPA >= 3.5
+top_students = Student.objects.filter(active=True, gpa__gte=3.5)
+print(top_students)
+
+# Students whose name starts with 'A'
+a_students = Student.objects.filter(name__startswith='A')
+print(a_students)
+
+# Students whose name contains 'an' (case-insensitive)
+an_students = Student.objects.filter(name__icontains='an')
+print(an_students)
+
+# Exclude inactive students
+active_students = Student.objects.exclude(active=False)
+print(active_students)
+
+# ------------------------------
+# 3. ORDERING & SLICING
+# ------------------------------
+
+# Order students by GPA descending
+students_by_gpa = Student.objects.all().order_by('-gpa')
+print(students_by_gpa)
+
+# Get top 3 GPA students
+top_3 = Student.objects.all().order_by('-gpa')[:3]
+print(top_3)
+
+# ------------------------------
+# 4. VALUES & VALUES_LIST
+# ------------------------------
+
+# Get only student names and emails
+student_info = Student.objects.values('name', 'email')
+print(list(student_info))
+
+# Get list of student emails
+emails = Student.objects.values_list('email', flat=True)
+print(list(emails))
+
+# ------------------------------
+# 5. AGGREGATIONS
+# ------------------------------
+
+# Average GPA of all students
+avg_gpa = Student.objects.aggregate(Avg('gpa'))
+print(avg_gpa)
+
+# Maximum GPA
+max_gpa = Student.objects.aggregate(Max('gpa'))
+print(max_gpa)
+
+# Count of active students
+active_count = Student.objects.filter(active=True).aggregate(Count('id'))
+print(active_count)
+
+# ------------------------------
+# 6. ANNOTATIONS
+# ------------------------------
+
+# Count number of enrollments per student
+students_with_count = Student.objects.annotate(course_count=Count('enrollment'))
+for s in students_with_count:
+    print(s.name, s.course_count)
+
+# Sum of course credits per student
+students_with_credits = Student.objects.annotate(total_credits=Sum('courses__credits'))
+for s in students_with_credits:
+    print(s.name, s.total_credits)
+
+# ------------------------------
+# 7. Q OBJECTS (Complex OR/AND conditions)
+# ------------------------------
+
+# Students in age 20 or GPA >= 3.8
+students_q = Student.objects.filter(Q(age=20) | Q(gpa__gte=3.8))
+print(students_q)
+
+# Students not female and GPA > 3.0
+students_q2 = Student.objects.filter(~Q(gender='F'), gpa__gt=3.0)
+print(students_q2)
+
+# ------------------------------
+# 8. F EXPRESSIONS (Compare fields or update relative values)
+# ------------------------------
+
+# Increase GPA of all active students by 0.1
+Student.objects.filter(active=True).update(gpa=F('gpa') + 0.1)
+
+# ------------------------------
+# 9. MANY-TO-MANY QUERIES
+# ------------------------------
+
+# Get all courses of Alice
+alice_courses = alice.courses.all()
+print(alice_courses)
+
+# Get all students in CSE101
+cse101_students = Course.objects.get(code='CSE101').student_set.all()
+print(cse101_students)
+
+# ------------------------------
+# 10. SELECT_RELATED & PREFETCH_RELATED (Optimize queries)
+# ------------------------------
+
+# select_related for foreign key (Enrollment -> Student)
+enrollments = Enrollment.objects.select_related('student', 'course').all()
+for e in enrollments:
+    print(e.student.name, e.course.code, e.grade)
+
+# prefetch_related for ManyToMany (Student -> Courses)
+students_prefetch = Student.objects.prefetch_related('courses').all()
+for s in students_prefetch:
+    print(s.name, [c.code for c in s.courses.all()])
+
+# ------------------------------
+# 11. DATE QUERIES
+# ------------------------------
+
+# Enrollments in Fall2025 semester
+fall_enrollments = Enrollment.objects.filter(semester='Fall2025')
+print(fall_enrollments)
+
+# ------------------------------
+# 12. BULK CREATE / UPDATE
+# ------------------------------
+
+# Bulk create new students
+new_students = [
+    Student(name="Ivy", age=20, gender='F', email='ivy@example.com', gpa=3.4),
+    Student(name="Jack", age=22, gender='M', email='jack@example.com', gpa=3.1)
+]
+Student.objects.bulk_create(new_students)
+
+# Bulk update GPA of students named Alice and Diana
+students_to_update = Student.objects.filter(name__in=['Alice', 'Diana'])
+for s in students_to_update:
+    s.gpa += 0.2
+Student.objects.bulk_update(students_to_update, ['gpa'])
+
+# ------------------------------
+# 13. GET OR CREATE / UPDATE OR CREATE
+# ------------------------------
+
+# Get or create a course
+course, created = Course.objects.get_or_create(code='PHY102', defaults={'name': 'Advanced Physics', 'credits': 3, 'department':'Science'})
+print(course, created)
+
+# Update or create student
+student, created = Student.objects.update_or_create(email='newstudent@example.com', defaults={'name':'New Student', 'age':21, 'gender':'O', 'gpa':3.0})
+print(student, created)
+
+# ------------------------------
+# 14. DELETE
+# ------------------------------
+
+# Delete inactive students
+Student.objects.filter(active=False).delete()
+
+# ------------------------------
+# 15. RAW SQL
+# ------------------------------
+
+# Get all students using raw SQL
+raw_students = Student.objects.raw('SELECT * FROM school_student WHERE gpa >= %s', [3.5])
+for s in raw_students:
+    print(s.name, s.gpa)
+
+# ------------------------------
+# 16. DYNAMIC FIELD ACCESS
+# ------------------------------
+
+# Get all fields of a student as dict
+for s in Student.objects.all():
+    data = {field.name: getattr(s, field.name) for field in s._meta.fields}
+    print(data)

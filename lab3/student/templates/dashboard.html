@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        header { background: #007BFF; color: white; padding: 15px 20px; }
+        header h1 { margin: 0; }
+        nav { background: #f2f2f2; padding: 10px 20px; }
+        nav a { margin-right: 15px; text-decoration: none; color: #007BFF; font-weight: bold; }
+        nav a:hover { text-decoration: underline; }
+        main { padding: 20px; }
+        .role-box { padding: 15px; margin: 10px 0; border-radius: 5px; background: #fff; border-left: 5px solid #007BFF; }
+        .logout { float: right; color: white; text-decoration: none; font-weight: bold; }
+        .logout:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Dashboard</h1>
+    <a class="logout" href="{% url 'logout' %}">Logout</a>
+</header>
+
+<nav>
+    <a href="{% url 'dashboard' %}">Home</a>
+    {% if user.role == 'admin' %}
+        <a href="{% url 'admin_panel' %}">Admin Panel</a>
+    {% endif %}
+</nav>
+
+<main>
+    <h2>Welcome, {{ user.username }}!</h2>
+    <p>Your role: <strong>{{ user.role|capfirst }}</strong></p>
+
+    {% if user.role == 'admin' %}
+        <div class="role-box">
+            <h3>Admin Actions</h3>
+            <ul>
+                <li>Manage Users</li>
+                <li>View Reports</li>
+                <li>System Settings</li>
+            </ul>
+        </div>
+    {% elif user.role == 'staff' %}
+        <div class="role-box">
+            <h3>Staff Dashboard</h3>
+            <ul>
+                <li>Manage Tasks</li>
+                <li>View Assignments</li>
+            </ul>
+        </div>
+    {% else %}
+        <div class="role-box">
+            <h3>User Dashboard</h3>
+            <ul>
+                <li>View Profile</li>
+                <li>Check Updates</li>
+            </ul>
+        </div>
+    {% endif %}
+
+</main>
+
+</body>
+</html>

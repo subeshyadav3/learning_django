@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List View</title>
+</head>
+<body>
+    {% for data in dataset %}
+        <h3>{{ data.name }}</h3>
+        <p>{{ data.description }}</p>
+        <hr>
+    {% empty %}
+        <p>No data found</p>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f9f9f9; margin: 0; padding: 0; }
+        header { background: #007BFF; color: white; padding: 15px 20px; }
+        header h1 { margin: 0; display: inline-block; }
+        .logout { float: right; color: white; text-decoration: none; font-weight: bold; }
+        .logout:hover { text-decoration: underline; }
+        main { padding: 20px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+        th { background: #007BFF; color: white; }
+        tr:nth-child(even) { background: #f2f2f2; }
+        .role-select { padding: 5px; }
+        .btn { padding: 5px 10px; background: #28a745; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        .btn:hover { background: #218838; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Admin Panel</h1>
+    <a class="logout" href="{% url 'logout' %}">Logout</a>
+</header>
+
+<main>
+    <h2>All Users</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Active</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for u in users %}
+            <tr>
+                <td>{{ u.id }}</td>
+                <td>{{ u.username }}</td>
+                <td>{{ u.email }}</td>
+                <td>{{ u.role|capfirst }}</td>
+                <td>{{ u.is_active }}</td>
+                <td>
+                    <!-- Example: Update role form -->
+                    <form method="post" style="display:inline;">
+                        {% csrf_token %}
+                        <select name="role" class="role-select">
+                            <option value="admin" {% if u.role == 'admin' %}selected{% endif %}>Admin</option>
+                            <option value="teacher" {% if u.role == 'teacher' %}selected{% endif %}>Teacher</option>
+                            <option value="student" {% if u.role == 'student' %}selected{% endif %}>Student</option>
+                        </select>
+                        <input type="hidden" name="user_id" value="{{ u.id }}">
+                        <button type="submit" class="btn">Update</button>
+                    </form>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6">No users found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+</head>
+<body>
+    <h2>Add Student</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Name:</label><br>
+        <input type="text" name="name"><br><br>
+
+        <label>Age:</label><br>
+        <input type="number" name="age"><br><br>
+
+        <label>Gender:</label><br>
+        <select name="gender">
+            <option value="">--Select--</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Other</option>
+        </select><br><br>
+
+        <label>Email:</label><br>
+        <input type="email" name="email"><br><br>
+
+        <button type="submit">Save</button>
+    </form>
+</body>
+</html>

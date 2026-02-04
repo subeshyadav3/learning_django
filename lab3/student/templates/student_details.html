@@ -1,0 +1,18 @@
+<div>
+    <h1>Student Details</h1>
+
+    <p><strong>Name:</strong> {{ student.name }}</p>
+    <p><strong>Age:</strong> {{ student.age }}</p>
+    <p><strong>Email:</strong> {{ student.email }}</p>
+
+    <h2>Marks</h2>
+    <ul>
+        {% for mark in marks %}
+            <li>Semester {{ mark.semester }}: {{ mark.marks }}</li>
+        {% empty %}
+            <li>No marks available</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'student-home' %}">Back to Student List</a>
+</div>
