@@ -1,9 +1,10 @@
-# api/urls.py
 from django.urls import path
-from .views import ItemListCreateAPIView, ItemDetailAPIView, index
+from .views import index, listItems, login_view, register_view, cart_view
 
 urlpatterns = [
+    path('login/', login_view, name='login'),
+    path('register/', register_view, name='register'),
     path('', index, name='home'),
-    path('items/', ItemListCreateAPIView.as_view(), name='item-list-create'),
-    path('items/<int:pk>/', ItemDetailAPIView.as_view(), name='item-detail'),
+    path('items/', listItems, name='items'),
+    path('cart/', cart_view),
 ]

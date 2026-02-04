@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'app',   # your app
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -49,8 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middlewares.UserActivityLogging'
 ]
+
 
 ROOT_URLCONF = 'api.urls'
 

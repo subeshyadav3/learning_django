@@ -1,19 +1,16 @@
 
 from django.utils.deprecation import MiddlewareMixin
 
+from datetime import datetime
 
 class UserActivityLogging(MiddlewareMixin):
-    def process_request(self,request):
-        user=request.user
-        if user.is_authenticated:
+    def __init__(self, get_response):
+        self.get_response = get_response
 
-            print("User Activity: ", user.username, " accessed ", request.path)
-    
-    def process_response(self,request,response):
-        user=request.user
-        if user.is_authenticated:
-   
+    def __call__(self, request):
+        log = f"[{datetime.now()}] {request.method} {request.path}\n"
 
-            print("User Activity: ", user.username, " received response with status ", response.status_code)
-        return response
-    
+        with open("request_log.txt", "a") as f:
+            f.write(log)
+
+        return self.get_response(request)
