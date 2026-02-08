@@ -1,16 +1,20 @@
-
-from django.utils.deprecation import MiddlewareMixin
-
 from datetime import datetime
 
-class UserActivityLogging(MiddlewareMixin):
+class UserActivityLogging:
     def __init__(self, get_response):
         self.get_response = get_response
 
     def __call__(self, request):
-        log = f"[{datetime.now()}] {request.method} {request.path}\n"
+        user = request.user.username if request.user.is_authenticated else "Anonymous"
 
-        with open("request_log.txt", "a") as f:
+        log = (
+            f"[{datetime.now()}] "
+            f"User: {user} | "
+            f"Method: {request.method} | "
+            f"Path: {request.path}\n"
+        )
+
+        with open("request_log.txt", "a", encoding="utf-8") as f:
             f.write(log)
 
         return self.get_response(request)
