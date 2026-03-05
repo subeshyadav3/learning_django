@@ -1,30 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "tasks/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Lists</title>
-</head>
+{% block content %}
+<style>
+    :root {
+        --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
 
-<body>
-    <h2>Your Tasks</h2>
+    .task-container {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-top: 2rem;
+    }
 
-    <a href="/add/">Add Task</a>
-    <a href="/logout/">Logout</a>
+    .header-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #f8f9fa;
+        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
 
-    <ul>
+    .page-title {
+        font-weight: 700;
+        color: #2d3436;
+        margin: 0;
+    }
 
-        {% for task in tasks %}
+    .table {
+        vertical-align: middle;
+    }
 
-        <li>
-            {{task.title}} - {{task.description}}
-            <a href="/delete/{{task.id}}">Delete</a>
-        </li>
+    .table thead th {
+        border-top: none;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        color: #636e72;
+        padding: 1rem;
+    }
 
-        {% endfor %}
+    /* Badge Styling for "Completed" status */
+    .status-badge {
+        padding: 0.5em 1em;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
 
-    </ul>
-</body>
+    .status-yes { background-color: #d1fae5; color: #065f46; }
+    .status-no { background-color: #fee2e2; color: #991b1b; }
 
-</html>
+    /* Button Styling */
+    .btn-custom-add {
+        background: var(--primary-gradient);
+        border: none;
+        color: white;
+        padding: 0.6rem 1.5rem;
+        border-radius: 8px;
+        transition: transform 0.2s;
+    }
+
+    .btn-custom-add:hover {
+        transform: translateY(-2px);
+        color: white;
+        box-shadow: 0 5px 15px rgba(118, 75, 162, 0.4);
+    }
+
+    .action-link {
+        text-decoration: none;
+        font-weight: 500;
+        margin-right: 10px;
+        transition: color 0.2s;
+    }
+</style>
+
+<div class="container">
+    <div class="task-container">
+        <div class="header-section">
+            <h2 class="page-title">My Tasks</h2>
+            <div>
+                <a href="{% url 'add_task' %}" class="btn btn-custom-add me-2">
+                    <i class="bi bi-plus-lg"></i> Add Task
+                </a>
+                <a href="{% url 'logout' %}" class="btn btn-outline-secondary btn-sm">Logout</a>
+            </div>
+        </div>
+
+        {% if tasks %}
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Task Name</th>
+                        <th>Description</th>
+                        <th class="text-center">Status</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                    <tr>
+                        <td class="fw-bold text-dark">{{ task.title }}</td>
+                        <td class="text-muted">{{ task.description|truncatechars:50 }}</td>
+                        <td class="text-center">
+                            {% if task.completed %}
+                                <span class="status-badge status-yes">Completed</span>
+                            {% else %}
+                                <span class="status-badge status-no">Pending</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end">
+                            <a href="{% url 'edit_task' task.id %}" class="action-link text-warning">Edit</a>
+                            <a href="{% url 'delete_task' task.id %}" class="action-link text-danger" onclick="return confirm('Delete this task?')">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="text-center py-5">
+            <img src="https://cdn-icons-png.flaticon.com/512/4076/4076549.png" width="80" class="mb-3 opacity-50" alt="Empty">
+            <p class="text-muted">Your to-do list is empty. Time to start something new!</p>
+            <a href="{% url 'add_task' %}" class="btn btn-primary">Create Your First Task</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
