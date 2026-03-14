@@ -1,0 +1,58 @@
+[2026-03-05 20:13:46] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: / | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-05 20:14:44] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: / | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-05 20:15:06] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: /add/ | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-05 20:15:38] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: POST | Path: /add/ | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-05 20:15:38] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: / | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje', 'messages': 'W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlRhc2sgYWRkZWQgc3VjY2Vzc2Z1bGx5IiwiIl1d:1vy9io:AK_9-ZUyvOueqSeLUvNavXiv0M8qlAzHpQWO_RcEYYY'}
+[2026-03-14 09:19:36] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: / | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-14 09:19:36] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: /favicon.ico | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-14 09:19:42] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:19:42] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:21:28] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: / | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-14 09:21:29] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:21:29] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:21:31] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:21:31] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:22:09] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:22:09] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:22:55] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:22:55] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:22:55] User: Anonymous | SessionID: No Session | Method: GET | Path: /login/ | Cookies: {}
+[2026-03-14 09:22:55] User: Anonymous | SessionID: No Session | Method: GET | Path: /login/ | Cookies: {}
+[2026-03-14 09:23:25] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:23:25] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:23:25] User: Anonymous | SessionID: No Session | Method: GET | Path: /login/ | Cookies: {}
+[2026-03-14 09:23:25] User: Anonymous | SessionID: No Session | Method: GET | Path: /login/ | Cookies: {}
+[2026-03-14 09:23:29] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: / | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-14 09:25:03] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:25:03] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:25:03] User: Anonymous | SessionID: No Session | Method: GET | Path: /login/ | Cookies: {}
+[2026-03-14 09:25:03] User: Anonymous | SessionID: No Session | Method: GET | Path: /login/ | Cookies: {}
+[2026-03-14 09:26:28] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:26:29] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:26:55] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:26:55] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:27:26] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: / | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-14 09:27:31] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: /api/tasks | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-14 09:27:31] User: subeshyadav3 | SessionID: h20aodglcxuy22ektdbpvpcngs4hqyje | Method: GET | Path: /api/tasks/ | Cookies: {'csrftoken': '6Unuu8Jo4S9vFRJXb6rxA3g8q0B6JKRw', 'sessionid': 'h20aodglcxuy22ektdbpvpcngs4hqyje'}
+[2026-03-14 09:27:37] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:27:37] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:28:03] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:28:03] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:28:06] User: Anonymous | SessionID: No Session | Method: OPTIONS | Path: /api/tasks/1/ | Cookies: {}
+[2026-03-14 09:28:06] User: Anonymous | SessionID: No Session | Method: PUT | Path: /api/tasks/1/ | Cookies: {}
+[2026-03-14 09:28:06] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:28:07] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:28:07] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:02] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:02] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:03] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:03] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:05] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:05] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:13] User: Anonymous | SessionID: No Session | Method: OPTIONS | Path: /api/tasks/4/ | Cookies: {}
+[2026-03-14 09:29:13] User: Anonymous | SessionID: No Session | Method: PUT | Path: /api/tasks/4/ | Cookies: {}
+[2026-03-14 09:29:13] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:15] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:15] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:18] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
+[2026-03-14 09:29:18] User: Anonymous | SessionID: No Session | Method: GET | Path: /api/tasks/ | Cookies: {}
